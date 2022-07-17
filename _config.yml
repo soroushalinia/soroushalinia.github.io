@@ -16,51 +16,51 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone:
+timezone: Asia/Tehran
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Soroush Alinia                  # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Hobbyist Developer            # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Personal Website written using Jekyll
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://soroushalinia.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: soroushalinia              # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: soroushalinia              # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@doamin.com             # change to your email address
+  name: Soroush Alinia
+  email: soroushalinia.wm@gmail.com    # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/soroushalinia # change to your twitter homepage
+    - https://github.com/soroushalinia       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/soroushalinia
 
-google_site_verification:               # fill in to your verification string
+# google_site_verification:               # fill in to your verification string
 
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
+# # ↑ --------------------------
+# # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id:                 # fill in your Google Analytics ID
-  # Google Analytics pageviews report settings
-  pv:
-    proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
-    cache_path:       # the local PV cache data, friendly to visitors from GFW region
+# google_analytics:
+#   id:                 # fill in your Google Analytics ID
+#   # Google Analytics pageviews report settings
+#   pv:
+#     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
+#     cache_path:       # the local PV cache data, friendly to visitors from GFW region
 
 # Prefer color scheme setting.
 #
@@ -80,10 +80,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: 'https://raw.githubusercontent.com/soroushalinia/soroushalinia.github.io/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: 'assets/img/avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
