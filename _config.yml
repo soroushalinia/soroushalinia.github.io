@@ -48,7 +48,7 @@ social:
     - https://github.com/soroushalinia       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/soroushalinia
+    # - https://www.linkedin.com/in/soroushalinia
 
 # google_site_verification:               # fill in to your verification string
 
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'https://raw.githubusercontent.com/soroushalinia/soroushalinia.github.io/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/avatar_circle.png'
+avatar: '/assets/img/avatar.jpg'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
