@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://soroushalinia.github.io/posts/test-post/</loc>
+<lastmod>2022-07-18T00:15:08+04:30</lastmod>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/categories/</loc>
+<lastmod>2022-07-18T00:15:45+04:30</lastmod>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/tags/</loc>
+<lastmod>2022-07-18T00:15:45+04:30</lastmod>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/archives/</loc>
+<lastmod>2022-07-18T00:15:45+04:30</lastmod>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/about/</loc>
+<lastmod>2022-07-18T00:15:45+04:30</lastmod>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/</loc>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/tags/test/</loc>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/categories/test/</loc>
+</url>
+<url>
+<loc>https://soroushalinia.github.io/categories/blogging/</loc>
+</url>
+</urlset>
