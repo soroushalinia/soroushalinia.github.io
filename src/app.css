@@ -1,1 +1,24 @@
 @import 'tailwindcss';
+
+@theme {
+	--color-primary: #bf1d3d;
+	--color-secondary: #c53350;
+	--color-background: #ffffff;
+	--color-background-dark: #09090b;
+	--color-border: #e5e5e5;
+	--color-border-dark: #27272a;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+.lang-fa {
+	font-family: 'Vazirmatn', sans-serif;
+}
+
+.lang-en {
+	font-family: 'Roboto', sans-serif;
+}
+
+.lang-code {
+	font-family: 'Jetbrains Mono';
+}
