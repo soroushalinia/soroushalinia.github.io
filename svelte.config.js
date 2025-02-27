@@ -9,7 +9,10 @@ const config = {
 	preprocess: [vitePreprocess(), mdsvex()],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		paths: {
+			base: process.env.NODE_ENV === "production" ? "/soroushalinia.github.io" : "",
+		}
 	},
 
 	extensions: ['.svelte', '.svx']
