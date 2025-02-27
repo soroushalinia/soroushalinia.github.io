@@ -3,10 +3,9 @@
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import '../app.css';
 	import Navbar from '../components/navbar.svelte';
-	let { children } = $props();
 	import { appState } from '$lib/state.svelte';
-
 	import { fontClass } from '$lib/utils';
+	let { children } = $props();
 </script>
 
 <ParaglideJS {i18n}>
