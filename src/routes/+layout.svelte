@@ -5,6 +5,7 @@
 	import Navbar from '../components/navbar.svelte';
 	import { appState } from '$lib/state.svelte';
 	import { fontClass } from '$lib/utils';
+	import Footer from '../components/footer.svelte';
 	let { children } = $props();
 </script>
 
@@ -12,8 +13,9 @@
 	<Navbar></Navbar>
 	<div
 		data-theme={appState.theme}
-		class={`bg-background dark:bg-background-dark pt-16 ${fontClass()}`}
+		class={`bg-background dark:bg-background-dark flex w-screen justify-center px-4 pt-16 text-black md:px-6 dark:text-white ${fontClass()}`}
 	>
-		{@render children()}
+		<div class="w-full max-w-7xl">{@render children()}</div>
 	</div>
+	<Footer></Footer>
 </ParaglideJS>

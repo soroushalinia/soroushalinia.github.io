@@ -10,9 +10,6 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		paths: {
-			base: process.env.NODE_ENV === "production" ? "/soroushalinia.github.io" : "",
-		}
 	},
 
 	extensions: ['.svelte', '.svx']

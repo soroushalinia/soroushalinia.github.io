@@ -7,6 +7,8 @@
 	--color-background-dark: #09090b;
 	--color-border: #e5e5e5;
 	--color-border-dark: #27272a;
+	--color-black: #09090b;
+	--color-white: #ffffff;
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

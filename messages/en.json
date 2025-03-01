@@ -4,5 +4,8 @@
 	"home_link": "Home",
 	"about_link": "About",
 	"blog_link": "Blog",
-	"projects_link": "Projects"
+	"projects_link": "Projects",
+	"description": "Full-Stack Developer, DevSecOps Engineer, and Security Researcher",
+	"copyright": "© 2025 Soroush Alinia. All rights reserved.", 
+	"download_cv": "Download CV"
 }
