@@ -6,6 +6,15 @@
 	"blog_link": "Blog",
 	"projects_link": "Projects",
 	"description": "Full-Stack Developer, DevSecOps Engineer, and Security Researcher",
-	"copyright": "© 2025 Soroush Alinia. All rights reserved.", 
-	"download_cv": "Download CV"
+	"copyright": "© 2025 Soroush Alinia. All rights reserved.",
+	"download_cv": "Download CV",
+	"error_404": "404: Page Not Found",
+	"error_general": "Unexpected Error Happened",
+	"recent_posts": "Recent Posts",
+	"projects_title": "Projects",
+	"placeholder_post_title": "Enhancing DevOps Security with Automated Vulnerability Scanning",
+	"placeholder_post_date": "2025-03-03",
+	"placeholder_post_alt": "Interface for automated vulnerability scanning",
+	"placeholder_project_title": "Secure CI/CD Pipeline for Cloud Deployments",
+	"placeholder_project_description": "A framework that enforces zero trust principles across Kubernetes clusters through policy-driven automation."
 }

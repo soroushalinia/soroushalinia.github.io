@@ -7,5 +7,14 @@
 	"projects_link": "پروژه‌ها",
 	"description": "توسعه‌دهنده فول‌استک، مهندس DevSecOps و پژوهشگر امنیت",
 	"copyright": "© ۱۴۰۳ سروش علی‌نیا. تمامی حقوق محفوظ است.",
-	"download_cv": "دانلود رزومه"
+	"download_cv": "دانلود رزومه",
+	"error_404": "۴۰۴: صفحه درخواستی پیدا نشد",
+	"error_general": "خطایی غیر منتظره رخ داده است",
+	"recent_posts": "جدید ترین پست‌ها",
+	"project_title": "پروژه‌ها",
+	"placeholder_post_title": "ارتقای امنیت DevOps با اسکن خودکار آسیب‌پذیری‌ها",
+	"placeholder_post_date": "۱۴۰۳/۱۲/۱۳",
+	"placeholder_post_alt": "رابط کاربری اسکن خودکار آسیب‌پذیری‌ها",
+	"placeholder_project_title": "پیاده‌سازی امن CI/CD برای استقرارهای ابری",
+	"placeholder_project_description": "چارچوبی که اصول اعتماد صفر را در کلاسترهای کوبرنتیز از طریق خودکارسازی مبتنی بر سیاست اعمال می‌کند."
 }
