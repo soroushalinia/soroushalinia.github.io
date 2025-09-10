@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Vazirmatn:wght@100..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Light - Catppuccin Latte */
+  --background: #eff1f5; /* Base */
+  --foreground: #4c4f69; /* Text */
+  --card: #ffffff; /* You can adjust */
+  --card-foreground: #4c4f69;
+  --popover: #ffffff;
+  --popover-foreground: #4c4f69;
+  --primary: #1e66f5; /* Blue */
+  --primary-foreground: #eff1f5;
+  --secondary: #df8e1d; /* Yellow */
+  --secondary-foreground: #eff1f5;
+  --muted: #ccd0da; /* Surface 0 */
+  --muted-foreground: #6c6f85; /* Subtext 0 */
+  --accent: #ea76cb; /* Pink */
+  --accent-foreground: #eff1f5;
+  --destructive: #d20f39; /* Red */
+  --border: #ccd0da;
+  --input: #ccd0da;
+  --ring: #1e66f5;
+
+  /* Chart placeholders */
+  --chart-1: #40a02b; /* Green */
+  --chart-2: #04a5e5; /* Sky */
+  --chart-3: #1e66f5; /* Blue */
+  --chart-4: #7287fd; /* Lavender */
+  --chart-5: #fe640b; /* Peach */
+
+  /* Sidebar */
+  --sidebar: #eff1f5;
+  --sidebar-foreground: #4c4f69;
+  --sidebar-primary: #1e66f5;
+  --sidebar-primary-foreground: #eff1f5;
+  --sidebar-accent: #ea76cb;
+  --sidebar-accent-foreground: #eff1f5;
+  --sidebar-border: #ccd0da;
+  --sidebar-ring: #1e66f5;
+}
+
+.dark {
+  /* Dark - Catppuccin Mocha */
+  --background: #1e1e2e; /* Base */
+  --foreground: #cdd6f4; /* Text */
+  --card: #313244; /* Surface 0 */
+  --card-foreground: #cdd6f4;
+  --popover: #313244;
+  --popover-foreground: #cdd6f4;
+  --primary: #89b4fa; /* Blue */
+  --primary-foreground: #1e1e2e;
+  --secondary: #f9e2af; /* Yellow */
+  --secondary-foreground: #1e1e2e;
+  --muted: #45475a; /* Surface 1 */
+  --muted-foreground: #a6adc8; /* Subtext 0 */
+  --accent: #f5c2e7; /* Pink */
+  --accent-foreground: #1e1e2e;
+  --destructive: #f38ba8; /* Red */
+  --border: #6c7086;
+  --input: #585b70;
+  --ring: #89b4fa;
+
+  /* Chart placeholders */
+  --chart-1: #a6e3a1; /* Green */
+  --chart-2: #89dceb; /* Sky */
+  --chart-3: #89b4fa; /* Blue */
+  --chart-4: #b4befe; /* Lavender */
+  --chart-5: #fab387; /* Peach */
+
+  /* Sidebar */
+  --sidebar: #313244;
+  --sidebar-foreground: #cdd6f4;
+  --sidebar-primary: #89b4fa;
+  --sidebar-primary-foreground: #cdd6f4;
+  --sidebar-accent: #f5c2e7;
+  --sidebar-accent-foreground: #cdd6f4;
+  --sidebar-border: #585b70;
+  --sidebar-ring: #89b4fa;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.vazirmatn {
+  font-family: "Vazirmatn", "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.roboto {
+  font-family: "Roboto", "Vazirmatn", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.fira-mono-regular {
+  font-family: "Fira Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fira-mono-medium {
+  font-family: "Fira Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.fira-mono-bold {
+  font-family: "Fira Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
