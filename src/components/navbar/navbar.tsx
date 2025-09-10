@@ -41,10 +41,10 @@ export default function Navbar({ url }: { url: URL }) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const winHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
 
-      const scrolled = ((scrollTop + winHeight) / docHeight) * 100;
+      const scrolled = (scrollTop / (docHeight - winHeight)) * 100;
       setScrollProgress(Math.min(scrolled, 100));
     };
 
