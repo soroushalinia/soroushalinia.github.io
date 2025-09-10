@@ -1,27 +1,41 @@
 "use client";
 import { useEffect, useState } from "react";
 import Avatar from "../../assets/avatar.jpg";
-import { Sun, Moon, Languages, Search } from "lucide-react";
+import { Sun, Moon, Languages, Search, Menu } from "lucide-react";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Navbar({ url }: { url: URL }) {
   const lang = getLangFromUrl(url);
   const t = useTranslations(lang);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    } else {
-      setTheme("light");
-      document.documentElement.classList.remove("dark");
-    }
+    // runs only on client
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const initial =
+      stored === "dark" || (!stored && prefersDark) ? "dark" : "light";
+    setTheme(initial);
+    document.documentElement.classList.toggle("dark", initial === "dark");
   }, []);
 
   const toggleTheme = () => {
@@ -40,21 +54,160 @@ export default function Navbar({ url }: { url: URL }) {
         }`;
 
   return (
-    <nav className="sticky top-0 z-50 h-16 w-full border-b border-border/30 bg-background vazirmatn">
+    <nav className="sticky top-0 z-50 h-16 w-full border-b dark:border-border/30 bg-background vazirmatn p-4">
       <div className="w-full flex justify-center h-full items-center">
         <div className="max-w-7xl w-full justify-between flex">
           <div className="flex items-center gap-2">
             <img
               src={Avatar.src}
               alt="Avatar"
-              className="h-10 w-10 rounded-full object-cover"
+              width={64}
+              height={64}
+              className="size-9 lg:size-10 rounded-full object-cover"
             />
-            <p className="vazirmatn font-bold text-lg">{t("nav.title")}</p>
+            <p className="vazirmatn font-bold text-lg lg:text-xl">
+              {t("nav.title")}
+            </p>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition">
-              <Search className="h-5 w-5" />
+          <div className="flex md:hidden items-center gap-2">
+            <Dialog>
+              <DialogTrigger>
+                {" "}
+                <div className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition">
+                  <Search className="h-5 w-5" />
+                </div>
+              </DialogTrigger>
+              <DialogContent className="dark:border-border/30">
+                <DialogHeader>
+                  <DialogTitle className="text-center">
+                    {t("nav.search.description")}
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border dark:border-border/30">
+                  <form
+                    className="flex w-full items-center gap-2"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const target = e.target as typeof e.target & {
+                        searchInput: { value: string };
+                      };
+                      const query = encodeURIComponent(
+                        target.searchInput.value
+                      );
+                      if (query)
+                        window.location.href = `/${lang}/search?key=${query}`;
+                    }}
+                  >
+                    <Search className="h-5 w-5" />
+                    <input
+                      name="searchInput"
+                      type="text"
+                      className="w-full focus:outline-none"
+                      placeholder={t("nav.search.description")}
+                    />
+                  </form>
+                </div>
+              </DialogContent>
+            </Dialog>
+            <Sheet>
+              <SheetTrigger>
+                {" "}
+                <div className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition">
+                  <Menu className="h-5 w-5" />
+                </div>
+              </SheetTrigger>
+              <SheetContent
+                className="dark:border-border/30"
+                side={lang === "fa" ? "left" : "right"}
+              >
+                <SheetHeader></SheetHeader>
+                <div className="w-full flex flex-col items-center gap-4">
+                  <a className="text-lg font-bold" href={`/${lang}/about`}>
+                    {t("nav.about")}
+                  </a>
+                  <a className="text-lg font-bold" href={`/${lang}/projects`}>
+                    {t("nav.projects")}
+                  </a>
+                  <a className="text-lg font-bold" href={`/${lang}/blog`}>
+                    {t("nav.blog")}
+                  </a>
+                </div>
+                <SheetFooter>
+                  <div className="w-full flex justify-center gap-2">
+                    <button
+                      className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition"
+                      onClick={toggleTheme}
+                      title="Toggle theme"
+                    >
+                      {theme === "light" ? (
+                        <Moon className="h-5 w-5" />
+                      ) : (
+                        <Sun className="h-5 w-5" />
+                      )}
+                    </button>
+                    <a
+                      className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition"
+                      href={newHref}
+                      title="Switch language"
+                    >
+                      <Languages className="h-5 w-5" />
+                    </a>
+                  </div>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
+          </div>
+          <div className="md:flex items-center gap-2 hidden">
+            <div className="flex gap-4 items-center mx-4 justify-center mt-1">
+              <a className="text-md font-bold" href={`/${lang}/about`}>
+                {t("nav.about")}
+              </a>
+              <a className="text-md font-bold" href={`/${lang}/projects`}>
+                {t("nav.projects")}
+              </a>
+              <a className="text-md font-bold" href={`/${lang}/blog`}>
+                {t("nav.blog")}
+              </a>
             </div>
+            <Dialog>
+              <DialogTrigger>
+                {" "}
+                <div className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition">
+                  <Search className="h-5 w-5" />
+                </div>
+              </DialogTrigger>
+              <DialogContent className="dark:border-border/30">
+                <DialogHeader>
+                  <DialogTitle className="text-center">
+                    {t("nav.search.description")}
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border dark:border-border/30">
+                  <form
+                    className="flex w-full items-center gap-2"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const target = e.target as typeof e.target & {
+                        searchInput: { value: string };
+                      };
+                      const query = encodeURIComponent(
+                        target.searchInput.value
+                      );
+                      if (query)
+                        window.location.href = `/${lang}/search?key=${query}`;
+                    }}
+                  >
+                    <Search className="h-5 w-5" />
+                    <input
+                      name="searchInput"
+                      type="text"
+                      className="w-full focus:outline-none"
+                      placeholder={t("nav.search.description")}
+                    />
+                  </form>
+                </div>
+              </DialogContent>
+            </Dialog>
             <button
               className="p-2 rounded-lg border hover:bg-accent hover:text-accent-foreground transition"
               onClick={toggleTheme}

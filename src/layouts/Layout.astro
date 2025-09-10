@@ -19,9 +19,24 @@ const t = useTranslations(lang);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{t("nav.title")}</title>
-    <Navbar url={Astro.url} client:load />
+    <script>
+      (function () {
+        try {
+          const theme = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          if (theme === "dark" || (!theme && prefersDark)) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
+    <Navbar url={Astro.url} client:load />
     <slot />
   </body>
 </html>
