@@ -25,9 +25,9 @@ export default function Navbar({ url }: { url: URL }) {
   const lang = getLangFromUrl(url);
   const t = useTranslations(lang);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    // runs only on client
     const stored = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -36,6 +36,17 @@ export default function Navbar({ url }: { url: URL }) {
       stored === "dark" || (!stored && prefersDark) ? "dark" : "light";
     setTheme(initial);
     document.documentElement.classList.toggle("dark", initial === "dark");
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      setScrollProgress(scrolled);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -54,7 +65,11 @@ export default function Navbar({ url }: { url: URL }) {
         }`;
 
   return (
-    <nav className="sticky top-0 z-50 h-16 w-full border-b dark:border-border/30 bg-background vazirmatn p-4">
+    <nav className="sticky top-0 z-50 h-16 w-full border-b bg-background/85 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/30 vazirmatn p-4">
+      <div
+        className="absolute bottom-[-2px] left-0 h-[3px] bg-primary transition-all duration-300 ease-linear"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <div className="w-full flex justify-center h-full items-center">
         <div className="max-w-7xl w-full justify-between flex">
           <div className="flex items-center gap-2">
@@ -65,9 +80,12 @@ export default function Navbar({ url }: { url: URL }) {
               height={64}
               className="size-9 lg:size-10 rounded-full object-cover"
             />
-            <p className="vazirmatn font-bold text-lg lg:text-xl">
+            <a
+              href="/"
+              className="vazirmatn font-bold text-lg lg:text-xl mt-1 hover:text-primary transition-colors"
+            >
               {t("nav.title")}
-            </p>
+            </a>
           </div>
           <div className="flex md:hidden items-center gap-2">
             <Dialog>
@@ -77,13 +95,13 @@ export default function Navbar({ url }: { url: URL }) {
                   <Search className="h-5 w-5" />
                 </div>
               </DialogTrigger>
-              <DialogContent className="dark:border-border/30">
+              <DialogContent className="">
                 <DialogHeader>
                   <DialogTitle className="text-center">
                     {t("nav.search.description")}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border dark:border-border/30">
+                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border ">
                   <form
                     className="flex w-full items-center gap-2"
                     onSubmit={(e) => {
@@ -117,18 +135,27 @@ export default function Navbar({ url }: { url: URL }) {
                 </div>
               </SheetTrigger>
               <SheetContent
-                className="dark:border-border/30"
+                className=""
                 side={lang === "fa" ? "left" : "right"}
               >
                 <SheetHeader></SheetHeader>
                 <div className="w-full flex flex-col items-center gap-4">
-                  <a className="text-lg font-bold" href={`/${lang}/about`}>
+                  <a
+                    className="text-lg font-bold hover:text-primary transition-colors"
+                    href={`/${lang}/about`}
+                  >
                     {t("nav.about")}
                   </a>
-                  <a className="text-lg font-bold" href={`/${lang}/projects`}>
+                  <a
+                    className="text-lg font-bold hover:text-primary transition-colors"
+                    href={`/${lang}/projects`}
+                  >
                     {t("nav.projects")}
                   </a>
-                  <a className="text-lg font-bold" href={`/${lang}/blog`}>
+                  <a
+                    className="text-lg font-bold hover:text-primary transition-colors"
+                    href={`/${lang}/blog`}
+                  >
                     {t("nav.blog")}
                   </a>
                 </div>
@@ -159,13 +186,22 @@ export default function Navbar({ url }: { url: URL }) {
           </div>
           <div className="md:flex items-center gap-2 hidden">
             <div className="flex gap-4 items-center mx-4 justify-center mt-1">
-              <a className="text-md font-bold" href={`/${lang}/about`}>
+              <a
+                className="text-md font-bold hover:text-primary transition-colors"
+                href={`/${lang}/about`}
+              >
                 {t("nav.about")}
               </a>
-              <a className="text-md font-bold" href={`/${lang}/projects`}>
+              <a
+                className="text-md font-bold hover:text-primary transition-colors"
+                href={`/${lang}/projects`}
+              >
                 {t("nav.projects")}
               </a>
-              <a className="text-md font-bold" href={`/${lang}/blog`}>
+              <a
+                className="text-md font-bold hover:text-primary transition-colors"
+                href={`/${lang}/blog`}
+              >
                 {t("nav.blog")}
               </a>
             </div>
@@ -176,13 +212,13 @@ export default function Navbar({ url }: { url: URL }) {
                   <Search className="h-5 w-5" />
                 </div>
               </DialogTrigger>
-              <DialogContent className="dark:border-border/30">
+              <DialogContent className="">
                 <DialogHeader>
                   <DialogTitle className="text-center">
                     {t("nav.search.description")}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border dark:border-border/30">
+                <div className="p-2 gap-2 flex items-center justify-center rounded-lg border ">
                   <form
                     className="flex w-full items-center gap-2"
                     onSubmit={(e) => {

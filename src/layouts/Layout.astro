@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/footer/footer";
 import "../styles/global.css";
 
 import Navbar from "@/components/navbar/navbar";
@@ -11,7 +12,7 @@ const t = useTranslations(lang);
 <html
   lang={lang}
   dir={lang === "fa" ? "rtl" : "ltr"}
-  class={`scroll-smooth ${lang === "fa" ? "vazirmatn" : "roboto"}`}
+  class={`scroll-smooth hide-scrollbar ${lang === "fa" ? "vazirmatn" : "roboto"}`}
 >
   <head>
     <meta charset="UTF-8" />
@@ -37,6 +38,7 @@ const t = useTranslations(lang);
   </head>
   <body>
     <Navbar url={Astro.url} client:load />
-    <slot />
+    <div class="h-[calc(100vh-64px)]"><slot /></div>
+    <Footer lang={lang} />
   </body>
 </html>
