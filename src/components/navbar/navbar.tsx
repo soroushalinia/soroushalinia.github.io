@@ -42,7 +42,9 @@ export default function Navbar({ url }: { url: URL }) {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight;
-      const winHeight = window.innerHeight;
+      const winHeight = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
 
       const scrolled = (scrollTop / (docHeight - winHeight)) * 100;
       setScrollProgress(Math.min(scrolled, 100));
@@ -71,7 +73,9 @@ export default function Navbar({ url }: { url: URL }) {
   return (
     <nav className="sticky top-0 z-50 h-16 w-full border-b bg-background/85 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/30 vazirmatn p-4">
       <div
-        className="absolute bottom-[-2px] left-0 h-[3px] bg-primary transition-all duration-300 ease-linear"
+        className={`absolute bottom-[-2px] ${
+          lang === "fa" ? "right-0" : "left-0"
+        } h-[3px] bg-primary transition-all duration-300 ease-linear`}
         style={{ width: `${scrollProgress}%` }}
       />
       <div className="w-full flex justify-center h-full items-center">
